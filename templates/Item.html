@@ -13,7 +13,6 @@
       <table class="table is-bordered">
   		<thead>
 		<tr>
-			<th>Image</th>
 			<th>Title</th>
 			<th>Description</th>
 			<th>Price</th>
@@ -22,10 +21,9 @@
 		<tbody>
 		{% for item in items %}
 			<tr>
-				<td><img src="{{ item.Price }}" width=100px; height=150px;></img></td>
+				<td><img src="{{ item.Image }}" width=100px; height=150px;></img></td>
 				<td><h1> {{ item.Title }} </h1></td>
 				<td><h2> {{ item.Image }}</h2></td>
-				<td><a class="button is-link" href="info/{{ item.imdbID }}">More info</a></td>
 			</tr>
 		{% endfor %}
 		</tbody>

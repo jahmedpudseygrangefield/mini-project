@@ -1,8 +1,6 @@
 '''
-
 new api key 42iq1nn6wamvl9jp5yyc6lwa
 new secret  asezyq0dxr 
-
 '''
 
 from flask import Flask, render_template, request
@@ -22,19 +20,18 @@ def item():
     r = requests.get('https://openapi.etsy.com/v2/listings/active?api_key='+apikey+'&s='+item_search)
     json_object = r.json()
 
-    items = json_object['Search']
+    items = json_object['results']
 
     for item in items:
-        title = item['Title']
-        state = item['State']
-        image = item['Image']
-        listing_id = item['Listing_id']
+        title = item['title']
+        state = item['state']
+        listing_id = item['listing_id']
+    return render_template('Item.html', item=item)
 
-    #return json_object
-    #return str(items)
-    return render_template('item.html', item=item)
 
-@app.route('/info', defaults={'id': '559139843'})
+
+'''
+@app.route('/info', defaults={'id': ''})
 @app.route('/info/<id>', methods=['POST','GET'])
 def info(id):
     apikey = '42iq1nn6wamvl9jp5yyc6lwa'
@@ -51,7 +48,6 @@ def info(id):
     return render_template('info.html', id=id, image=image, title=tile, description=description, price=price)
 
 
-'''
 
 #to be used when basket system is added 
 
@@ -76,7 +72,6 @@ def unwatch_movie(id):
 def userFavs():
     favMovies = mongo.db.Items.find()
     return render_template('Items.html', favMovies=favMovies)
-
 '''
 
 @app.route('/')
@@ -89,6 +84,3 @@ def infosearch():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='127.0.0.1')
-
-
-
