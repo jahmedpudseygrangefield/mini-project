@@ -25,8 +25,9 @@ def item():
     for item in items:
         title = item['title']
         state = item['state']
-        listing_id = item['listing_id']
-    return render_template('Item.html', item=item)
+        description = item['description']
+        price = item['price']
+    return render_template('Item.html', items=items )
 
 
 
@@ -39,10 +40,9 @@ def info(id):
     r = requests.get('https://openapi.etsy.com/v2/listings/active?api_key='+apikey+'&i='+item_search)
     json_object = r.json()
 
-    title = json_object['Title']
-    description = json_object['Description']
-    image = json_object['Image']
-    Price = json_object['Price']
+    title = json_object['title']
+    description = json_object['state']
+    listing_id = item['listing_id']
 
     #return json_object
     return render_template('info.html', id=id, image=image, title=tile, description=description, price=price)

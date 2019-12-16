@@ -14,6 +14,7 @@
   		<thead>
 		<tr>
 			<th>Title</th>
+			<th>State</th>
 			<th>Description</th>
 			<th>Price</th>
 		</tr>
@@ -21,9 +22,10 @@
 		<tbody>
 		{% for item in items %}
 			<tr>
-				<td><img src="{{ item.Image }}" width=100px; height=150px;></img></td>
-				<td><h1> {{ item.Title }} </h1></td>
-				<td><h2> {{ item.Image }}</h2></td>
+				<td><h1> {{ item.title }} 		</h1></td>
+				<td><h1> {{ item.state }} 		</h1></td>
+				<td><h1> {{ item.description }}	</h1></td>
+				<td><h2> {{ item.price}}		</h2></td>
 			</tr>
 		{% endfor %}
 		</tbody>
