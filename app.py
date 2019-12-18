@@ -1,6 +1,11 @@
 '''
 new api key 42iq1nn6wamvl9jp5yyc6lwa
 new secret  asezyq0dxr 
+
+
+summary so far;
+items on display - good
+searchbar not specific -
 '''
 
 from flask import Flask, render_template, request
@@ -31,7 +36,6 @@ def item():
 
 
 
-'''
 @app.route('/info', defaults={'id': ''})
 @app.route('/info/<id>', methods=['POST','GET'])
 def info(id):
@@ -40,39 +44,38 @@ def info(id):
     r = requests.get('https://openapi.etsy.com/v2/listings/active?api_key='+apikey+'&i='+item_search)
     json_object = r.json()
 
-    title = json_object['title']
-    description = json_object['state']
-    listing_id = item['listing_id']
+    info = json_object['results']
+
+    for item in info:
+        title = item['title']
+        state = item['state']
+        listing_item = item['listing_id']
+
+
 
     #return json_object
-    return render_template('info.html', id=id, image=image, title=tile, description=description, price=price)
+    return render_template('info.html', item=item)
 
-
-
+####
 #to be used when basket system is added 
 
-@app.route('/delete/<id>', methods=['POST'])
-def delete_movie(id):
+#wip 
+#######################################################
+
+@app.route('/basket/<id>', methods=['POST'])
+def delete_item(id):
     mongo.db.Items.delete_one({'_id': id})
-    resp = 'Movie removed successfully!'
+    resp = 'Item removed from basket!'
     return resp
 
-@app.route('/Watched/<id>', methods=['POST'])
-def Watched_movie(id):
-    mongo.db.Items.update({'_id': id},{'$set':{'watched': 'true'}})
-    resp = 'Movie set to watched successfully!'
+@app.route('/basket/<id>', methods=['POST'])
+def add_item(id):
+    mongo.db.Items.update({'_id': id},{'$set':{'added': 'true'}})
+    resp = 'Item added to basket'
     return userFavs
 
-@app.route('/unwatch/<id>', methods=['POST'])
-def unwatch_movie(id):
-    mongo.db.Items.update({'_id':id},{'$set':{'watched': 'false'}})
-    return userFavs()
+############################################################
 
-@app.route('/userFavs')
-def userFavs():
-    favMovies = mongo.db.Items.find()
-    return render_template('Items.html', favMovies=favMovies)
-'''
 
 @app.route('/')
 def index():

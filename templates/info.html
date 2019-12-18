@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title Info</title>
+    <title>Item Info</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
@@ -13,19 +13,22 @@
       <table class="table is-bordered">
   		<thead>
 		<tr>
-			<th>image</th>
 			<th>Title</th>
 			<th>Description</th>
 			<th>Price</th>
+			<th>State</th>
+			<th>Listing ID</th>
 		</tr>
 		</thead>
 		<tbody>
 			<tr>
 
-				<td><img src="{{ image }}" width=100px; height=150px;></img></td>
-				<td><h1> {{ title }} </h1></td>
-				<td><h2> {{ description }}</h2></td>
-				<td><h2> {{ price }}</h2></td>
+				<td><h1> {{ item.title }} 		</h2></td>
+				<td><h2> {{ item.description }}	</h2></td>
+				<td><h2> £{{ item.price }}		</h2></td>
+				<td><h2> {{ item.state}}			</h2></td>
+				<td><h2> {{ item.listing_id}}	</h2></td>
+
 				
 			</tr>
 		</tbody>
