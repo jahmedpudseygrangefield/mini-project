@@ -36,12 +36,12 @@ def item():
 
 
 
-@app.route('/info', defaults={'id': ''})
+@app.route('/info', defaults={'id': '114089236'})
 @app.route('/info/<id>', methods=['POST','GET'])
 def info(id):
     apikey = '42iq1nn6wamvl9jp5yyc6lwa'
     item_search = id
-    r = requests.get('https://openapi.etsy.com/v2/listings/active?api_key='+apikey+'&i='+item_search)
+    r = requests.get('https://openapi.etsy.com/v2/listings/active?api_key='+apikey+'&s='+item_search)
     json_object = r.json()
 
     info = json_object['results']
@@ -81,9 +81,6 @@ def add_item(id):
 def index():
     return render_template('index.html')
 
-@app.route('/infosearch')
-def infosearch():
-	return render_template('info-search.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000, host='127.0.0.1')
