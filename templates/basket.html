@@ -23,11 +23,11 @@
 		<tbody>
 		{% for item in basket %}
 			<tr>
-				<td><h1> {{ item.title }} </h1></td>
-				<td><h1> {{ item.price}} </h1></td>
-				<td><h1> {{ item.description}}</h1></td>
-				<td><h1> {{ item.listing_id }}</h1></td>
-				<td><h1> {{ item.state}}</h1></td>
+				<td><h1> {{ item.title }} 		</h1></td>
+				<td><h1> {{ item.price}} 		</h1></td>
+				<td><h1> {{ item.description}}	</h1></td>
+				<td><h1> {{ item.listing_id }}	</h1></td>
+				<td><h1> {{ item.state}}		</h1></td>
 				<td>
 					<form method="POST" action="/delete/{{item.listing_id}}">
 						<button class="button is-danger">Remove</button>

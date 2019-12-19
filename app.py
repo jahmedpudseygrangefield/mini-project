@@ -36,6 +36,7 @@ def item():
 
 
 
+#more info section, includes description of product due to it being too big for main listing 
 @app.route('/info', defaults={'id': ''})
 @app.route('/info/<id>', methods=['POST','GET'])
 def info(id):
