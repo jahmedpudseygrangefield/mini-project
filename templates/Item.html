@@ -17,6 +17,7 @@
 			<th>State</th>
 			<th>Price(GBP)</th>
 			<th>More Information</th>
+			<th>Add To Basket</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -25,7 +26,8 @@
 				<td><h1> {{ item.title }} 		</h1></td>
 				<td><h1> {{ item.state }} 		</h1></td>
 				<td><h2> £{{ item.price}}		</h2></td>
-				<td> <div class = "buttons"> <a class="button is-primary" href="/info{{ item.object_ID }}">More info</a></td> </div>
+				<td><div class = "buttons"> <a class="button is-primary" href="/info/{{ item.listing_id }}"> {{item.listing_id}}</a> </td> </div>
+				<td><div class = "buttons"> <a class="button is-link" href="/basket/">Add to Basket</a></div>
 			</tr>
 		{% endfor %}
 		</tbody>

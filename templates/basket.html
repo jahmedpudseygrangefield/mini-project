@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Items</title>
+    <title>Basket</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
@@ -15,6 +15,9 @@
 		<tr>
 			<th>Title</th>
 			<th>Price</th>
+			<th>Description</th>
+			<th>Listing ID</th>
+			<th>Market Status</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -22,23 +25,14 @@
 			<tr>
 				<td><h1> {{ item.title }} </h1></td>
 				<td><h1> {{ item.price}} </h1></td>
-
-
+				<td><h1> {{ item.description}}</h1></td>
+				<td><h1> {{ item.listing_id }}</h1></td>
+				<td><h1> {{ item.state}}</h1></td>
 				<td>
-					<form method="POST" action="/delete/{{item._id}}">
+					<form method="POST" action="/delete/{{item.listing_id}}">
 						<button class="button is-danger">Remove</button>
 					</form>
 				</td>
-				<td>
-					{% if item.watched == 'true' %}
-					<form method="POST" action="/unwatch/{{item._id}}">
-						<button class="button is-primary is-outlined">Watched</button>
-					</form>
-					{% else %}
-					<form method="POST" action="/watched/{{item._id}}">
-						<button class="button is-primary">Watch</button>
-					</form>
-					{% endif %}
 				</td>
 			</tr>
 		{% endfor %}
